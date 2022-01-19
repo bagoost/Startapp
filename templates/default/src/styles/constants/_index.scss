@@ -1,0 +1,36 @@
+// Colors
+// Black
+$black: #1D1D1B;
+$black75: rgba($black, 0.75);
+$black50: rgba($black, 0.5);
+$black25: rgba($black, 0.25);
+// White
+$white: #FFFFFF;
+$white75: rgba($white, 0.75);
+$white50: rgba($white, 0.5);
+$white25: rgba($white, 0.25);
+
+// Others
+$black-line: $black50;
+$spinner: #F5F9FC;
+$alert-background: rgba(29, 29, 27, 0.5);
+
+// Widths
+$large: clamp(360px, 27vw, 450px);
+$short: clamp(165px, 11vw, 206px);
+
+// Grid settings
+// Desktop
+$desktop-breakpoint: 1200px;
+$desktop-cols: 12;
+$desktop-col-width: 68px;
+$desktop-col-gutter: 30px;
+// Mobile
+$mobile-breakpoint: 599px;
+$mobile-cols: 4;
+$mobile-col-gutter: 16px;
+$mobile-col-width: calc((100vw - 5 * #{$mobile-col-gutter}) / 4);
+// Tablet
+$tablet-cols: 12;
+$tablet-col-width: calc((100vw - 150px) / 12);
+$tablet-col-gutter: 10px;

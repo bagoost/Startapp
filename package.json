@@ -1,0 +1,38 @@
+{
+  "name": "@dealing/startapp-web",
+  "author": "Dealing SpA",
+  "version": "1.0.0",
+  "description": "A React kickstarter project builder with our favourite configurations and npm modules.",
+  "main": "src/index.js",
+  "bin": {
+    "@dealing/startapp-web": "bin/startapp-web",
+    "startapp-web": "bin/startapp-web"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dealing",
+    "cli",
+    "react",
+    "web",
+    "kickstart",
+    "kickstarter",
+    "template"
+  ],
+  "files": [
+    "bin/",
+    "src/",
+    "templates/"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "arg": "^5.0.1",
+    "esm": "^3.2.25",
+    "inquirer": "^8.2.0",
+    "ncp": "^2.0.0"
+  }
+}
