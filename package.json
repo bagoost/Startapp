@@ -9,7 +9,8 @@
     "startapp-web": "bin/startapp-web"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry":"https://npm.pkg.github.com/@dealing"
   },
   "scripts": {
     "lint": "eslint .",
