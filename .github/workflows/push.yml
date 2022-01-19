@@ -30,6 +30,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    needs: [ "linter" ]
     steps:
       - name: Checkout Code Repository
         uses: actions/checkout@v2
