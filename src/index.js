@@ -1,2 +1,3 @@
-require = require('esm')(module);
-require('../src/cli').cli(process.argv);
+const requireEsm = require('esm')(module /* , options */);
+
+requireEsm('../src/cli').default(process.argv);

@@ -28,16 +28,17 @@ async function updatePackageJson(options) {
   const fileContent = fs.readFileSync('./package.json');
   const jsonContent = JSON.parse(fileContent);
   jsonContent.name = options.slug.slice(2);
-  fs.writeFileSync('./package.json', JSON.stringify(jsonContent, undefined, '  ') + '\n');
+  fs.writeFileSync('./package.json', `${JSON.stringify(jsonContent, undefined, '  ')}\n`);
 }
 
-export async function createProject(options) {
+export default async function createProject(options) {
   const currentFileUrl = import.meta.url;
   const templateDir = path.resolve(
     new URL(currentFileUrl).pathname,
     '../../templates',
-    options.template.toLowerCase()
+    options.template.toLowerCase(),
   );
+  // eslint-disable-next-line no-param-reassign
   options.templateDirectory = templateDir;
 
   try {
@@ -52,7 +53,7 @@ export async function createProject(options) {
   console.log('Finished copying files');
 
   process.chdir(options.slug);
-  
+
   console.log('Installing dependencies...');
   await installDependencies(options);
   console.log('Finished installing dependencies');

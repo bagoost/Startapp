@@ -1,4 +1,4 @@
-name: CI
+name: CD
 
 # Enable Buildkit and let compose use it to speed up image building
 env:
@@ -6,8 +6,8 @@ env:
   COMPOSE_DOCKER_CLI_BUILD: 1
 
 on:
-  pull_request:
-    branches: [ "master", "staging", "development" ]
+  push:
+    branches: [ "master" ]
 
 
 jobs:
@@ -27,3 +27,20 @@ jobs:
 
       - name: Run linter
         run: npm lint
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Publish update
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
