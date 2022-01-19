@@ -39,22 +39,3 @@ jobs:
         uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
-
-  publish-github:
-    runs-on: ubuntu-latest
-    needs: [ "linter" ]
-    steps:
-      - name: Checkout Code Repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node 16
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@dealing'
-
-      - name: Publish update
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
