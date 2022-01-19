@@ -14,8 +14,7 @@
     "url": "https://github.com/bagoost/Startapp"
   },
   "publishConfig": {
-    "access": "public",
-    "registry":"https://npm.pkg.github.com/@bagoost"
+    "access": "public"
   },
   "scripts": {
     "lint": "eslint .",
