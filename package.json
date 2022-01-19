@@ -10,7 +10,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry":"https://npm.pkg.github.com/@dealing"
+    "registry":"https://npm.pkg.github.com/@bagoost"
   },
   "scripts": {
     "lint": "eslint .",
