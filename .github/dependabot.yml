@@ -12,3 +12,9 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+
+  # Maintain dependencies for node in default template
+  - package-ecosystem: "npm"
+    directory: "/templates/default"
+    schedule:
+      interval: "daily"
