@@ -4,12 +4,16 @@ name: CD
 env:
   DOCKER_BUILDKIT: 1
   COMPOSE_DOCKER_CLI_BUILD: 1
-  PACKAGE_VERSION: "$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
+  PACKAGE_VERSION: "$(echo $(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]'))"
 
 on:
   push:
     branches: [ "master" ]
 
+outputs:
+  version:
+    description: "Version of the package"
+    value: ${{ steps.get-version.outputs.random-id }}
 
 jobs:
   linter:
@@ -47,22 +51,17 @@ jobs:
     steps:
       - name: Checkout Code Repository
         uses: actions/checkout@v2
-
-      - name: Set env
-        run: echo "PACKAGE_VERSION=$(echo $PACKAGE_VERSION)" >> $GITHUB_ENV
       
-      - name: Test env
-        run: echo $PACKAGE_VERSION
-      
-      - name: Test env 2
-        run: echo {{ env.PACKAGE_VERSION }}
+      - name: Get Version
+        id: get-version
+        run: echo "::set-output name=version::$(echo {{ env.PACKAGE_VERSION }})"
 
       - name: Create release
         uses: actions/create-release@v1
         with:
           draft: false
           prerelease: false
-          release_name: ${{ env.PACKAGE_VERSION }}
-          tag_name: ${{ env.PACKAGE_VERSION }}
+          release_name: ${{ outputs.version.value }}
+          tag_name: ${{ outputs.version.value }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
