@@ -1,7 +1,7 @@
 {
   "name": "@dealing/startapp-web",
   "author": "Dealing SpA",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A React kickstarter project builder with our favourite configurations and npm modules.",
   "main": "src/index.js",
   "bin": {
@@ -18,7 +18,8 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "lint-fix": "eslint . --fix"
+    "lint-fix": "eslint . --fix",
+    "get-version": "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
   },
   "keywords": [
     "dealing",
