@@ -53,6 +53,8 @@ jobs:
       
       - name: Test env
         run: echo $PACKAGE_VERSION
+      
+      - name: Test env 2
         run: echo {{ env.PACKAGE_VERSION }}
 
       - name: Create release
