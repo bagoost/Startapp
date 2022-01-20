@@ -49,7 +49,7 @@ jobs:
       
       - name: Get Version
         id: get-version
-        run: echo "::set-output name=version::$(echo {{ env.PACKAGE_VERSION }})"
+        run: echo "::set-output name=version::$(echo hola)"
 
       - name: Create release
         uses: actions/create-release@v1
