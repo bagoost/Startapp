@@ -10,11 +10,6 @@ on:
   push:
     branches: [ "master" ]
 
-outputs:
-  version:
-    description: "Version of the package"
-    value: ${{ steps.get-version.outputs.random-id }}
-
 jobs:
   linter:
     runs-on: ubuntu-latest
