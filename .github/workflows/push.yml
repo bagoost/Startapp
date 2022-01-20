@@ -47,12 +47,18 @@ jobs:
       - name: Checkout Code Repository
         uses: actions/checkout@v2
 
+      - name: Get version
+        run: "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
+
+      - name: Test PACKAGE_VERSION
+        run: echo $PACKAGE_VERSION
+
       - name: Create release
         uses: actions/create-release@v1
         with:
           draft: false
           prerelease: false
-          release_name: "$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
-          tag_name: "$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
+          release_name: ${{ env.PACKAGE_VERSION }}
+          tag_name: ${{ env.PACKAGE_VERSION }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
