@@ -5,31 +5,51 @@ import createProject from './main';
 function parseArgumentsIntoOptions(rawArgs) {
   const args = arg(
     {
+      '--type': String,
+      '--manager': String,
       '--git': Boolean,
-      '--yes': Boolean,
-      '--yarn': Boolean,
+      '-t': '--type',
+      '-m': '--manager',
       '-g': '--git',
-      '-y': '--yes',
     },
     {
       argv: rawArgs.slice(2),
     },
   );
+  if (args['--manager'] !== undefined) {
+    if (!(args['--manager'] === 'npm' || args['--manager'] === 'yarn')) {
+      console.log('Manager should be one of "npm" or "yarn"');
+      process.exit(1);
+    }
+  }
+  if (args['--type'] !== undefined) {
+    if (!(args['--type'] === 'web' || args['--type'] === 'server')) {
+      console.log('Type should be one of "web" or "server"');
+      process.exit(1);
+    }
+  }
   return {
+    type: args['--type'] || '',
     name: 'My new project',
     slug: 'my-new-project',
     template: 'Default',
-    yarn: args['--yarn'] || false,
-    skipPrompts: args['--yes'] || false,
+    manager: args['--manager'] || '',
     git: args['--git'] || false,
   };
 }
 
 async function promptForMissingOptions(options) {
-  if (options.skipPrompts) {
-    return options;
+  let projectType = options.type;
+  if (options.type.length === 0) {
+    projectType = await inquirer.prompt([{
+      type: 'list',
+      name: 'name',
+      message: 'Project type',
+      choices: ['Web', 'Server'],
+      default: 'Web',
+    }])
+      .then((answer) => answer.name.toLowerCase());
   }
-
   const projectName = await inquirer.prompt([{
     type: 'input',
     name: 'name',
@@ -46,12 +66,13 @@ async function promptForMissingOptions(options) {
     default: projectName.replaceAll(' ', '-').toLowerCase(),
   });
 
-  if (!options.yarn) {
+  if (options.manager.length === 0 && projectType === 'web') {
     questions.push({
-      type: 'confirm',
-      name: 'yarn',
-      message: 'Use yarn as package manager?',
-      default: true,
+      type: 'list',
+      name: 'manager',
+      message: 'Select your project manager',
+      choices: ['yarn', 'npm'],
+      default: 'yarn',
     });
   }
 
@@ -67,9 +88,10 @@ async function promptForMissingOptions(options) {
   const answers = await inquirer.prompt(questions);
   return {
     ...options,
+    type: projectType,
     name: projectName,
     slug: `./${answers.slug || options.slug}`,
-    yarn: answers.yarn || options.yarn,
+    manager: answers.manager || options.manager,
     git: options.git || answers.git,
   };
 }

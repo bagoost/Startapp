@@ -1,12 +1,12 @@
 {
-  "name": "@dealing/startapp-web",
+  "name": "@dealing/startapp",
   "author": "Dealing SpA",
-  "version": "1.0.3",
-  "description": "A React kickstarter project builder with our favourite configurations and npm modules.",
+  "version": "1.0.4",
+  "description": "A kickstarter project builder with our favourite configurations, for web and backend, production-ready.",
   "main": "src/index.js",
   "bin": {
-    "@dealing/startapp-web": "bin/startapp-web",
-    "startapp-web": "bin/startapp-web"
+    "@dealing/startapp": "bin/startapp",
+    "startapp": "bin/startapp"
   },
   "homepage": "https://github.com/bagoost/Startapp",
   "repository": {

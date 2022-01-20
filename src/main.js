@@ -20,7 +20,7 @@ async function copyTemplateFiles(options) {
 }
 
 async function installDependencies(options) {
-  const { stdout } = await exec(`${(options.yarn) ? 'yarn' : 'npm'} install`);
+  const { stdout } = await exec(`${options.manager} install`);
   console.log(stdout);
 }
 
@@ -36,6 +36,7 @@ export default async function createProject(options) {
   const templateDir = path.resolve(
     new URL(currentFileUrl).pathname,
     '../../templates',
+    options.type,
     options.template.toLowerCase(),
   );
   // eslint-disable-next-line no-param-reassign
@@ -54,11 +55,12 @@ export default async function createProject(options) {
 
   process.chdir(options.slug);
 
-  console.log('Installing dependencies...');
-  await installDependencies(options);
-  console.log('Finished installing dependencies');
-
-  updatePackageJson(options);
+  if (options.type === 'web') {
+    console.log('Installing dependencies...');
+    await installDependencies(options);
+    console.log('Finished installing dependencies');
+    updatePackageJson(options);
+  }
 
   if (options.git) {
     const { stdout } = await exec('git init');

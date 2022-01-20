@@ -15,6 +15,6 @@ updates:
 
   # Maintain dependencies for node in default template
   - package-ecosystem: "npm"
-    directory: "/templates/default"
+    directory: "/templates/web/default"
     schedule:
       interval: "daily"
