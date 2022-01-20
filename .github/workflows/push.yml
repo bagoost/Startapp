@@ -4,7 +4,6 @@ name: CD
 env:
   DOCKER_BUILDKIT: 1
   COMPOSE_DOCKER_CLI_BUILD: 1
-  PACKAGE_VERSION: "$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
 
 on:
   push:
@@ -49,7 +48,7 @@ jobs:
       
       - name: Get Version
         id: get-version
-        run: echo "::set-output name=version::$(echo hola)"
+        run: echo "::set-output name=version::$(echo $(node -p -e "require('./package.json').version"))"
 
       - name: Create release
         uses: actions/create-release@v1
