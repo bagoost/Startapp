@@ -55,7 +55,7 @@ jobs:
         with:
           draft: false
           prerelease: false
-          release_name: ${{ PACKAGE_VERSION }}
-          tag_name: ${{ PACKAGE_VERSION }}
+          release_name: ${{ env.PACKAGE_VERSION }}
+          tag_name: ${{ env.PACKAGE_VERSION }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
