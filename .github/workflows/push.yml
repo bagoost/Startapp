@@ -4,6 +4,7 @@ name: CD
 env:
   DOCKER_BUILDKIT: 1
   COMPOSE_DOCKER_CLI_BUILD: 1
+  PACKAGE_VERSION: "$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
 
 on:
   push:
@@ -46,9 +47,6 @@ jobs:
     steps:
       - name: Checkout Code Repository
         uses: actions/checkout@v2
-
-      - name: Get version
-        run: "PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
 
       - name: Test PACKAGE_VERSION
         run: echo ${{ env.PACKAGE_VERSION }}
