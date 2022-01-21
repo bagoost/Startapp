@@ -64,4 +64,4 @@ We are working to automate this process :)
 
 ## Disclosure
 
-This project is strongly base on the code and tutorial provided in (this webpage)[https://www.twilio.com/blog/how-to-build-a-cli-with-node-js].
+This project is strongly base on the code and tutorial provided in [this webpage](https://www.twilio.com/blog/how-to-build-a-cli-with-node-js).
