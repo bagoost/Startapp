@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./compose/production/django/Dockerfile
+    command: /start
+    env_file:
+      - .env
+
+  nginx:
+    container_name: nginx
+    image: "nginx:latest"
+    ports:
+      - "80:80"
+    volumes:
+      - ./compose/production/nginx:/etc/nginx/conf.d
+    links:
+      - django
+    depends_on:
+      - django
+    env_file:
+      - .env
+
+  celeryworker:
+    container_name: celeryworker
+    command: /start-celeryworker
+    <<: *django
+    links:
+      - django
+    depends_on:
+      - django
+    env_file:
+      - .env
+
+  celerybeat:
+    container_name: celerybeat
+    command: /start-celerybeat
+    <<: *django
+    links:
+      - django
+    depends_on:
+      - django
+    env_file:
+      - .env

@@ -1,0 +1,24 @@
+# General
+# ------------------------------------------------------------------------------
+USE_DOCKER=yes
+IPYTHONDIR=/app/.ipython
+ENV_NAME=local
+FIREBASE_CREDENTIALS=
+SLACK_BOT_TOKEN=
+SLACK_CHANNEL=
+SLACK_CHANNEL_CONTACT=
+
+# Redis
+# ------------------------------------------------------------------------------
+REDIS_URL=redis://redis:6379/0
+
+# Celery
+# ------------------------------------------------------------------------------
+
+# JWT
+# ------------------------------------------------------------------------------
+JWT_KEY=270VKZQO208QwKeRIqT8cVa6v2Dlf2k93IV9GGFe73A5qCaEWHHOHboYgb6tIXlZ
+
+#ELASTICSEARCH
+# ------------------------------------------------------------------------------
+ELASTICSEARCH_HOST=elasticsearch:9200

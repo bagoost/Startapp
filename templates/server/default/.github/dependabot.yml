@@ -1,27 +1,11 @@
+# Config for Dependabot updates. See Documentation here:
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
 version: 2
-
 updates:
-  # Update Github actions in workflows
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "daily"
-
-  # Maintain dependencies for node
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "daily"
-
-  # Maintain dependencies for node in default template
-  - package-ecosystem: "npm"
-    directory: "/templates/web/default"
-    schedule:
-      interval: "daily"
-
   # Update GitHub actions in workflows
   - package-ecosystem: "github-actions"
-    directory: "/templates/server/default"
+    directory: "/"
     # Check for updates to GitHub Actions every weekday
     schedule:
       interval: "daily"
@@ -32,7 +16,7 @@ updates:
   # https://github.com/dependabot/dependabot-core/issues/2178
   - package-ecosystem: "docker"
     # Look for a `Dockerfile` in the `compose/local/django` directory
-    directory: "/templates/server/default/compose/local/django/"
+    directory: "compose/local/django/"
     # Check for updates to GitHub Actions every weekday
     schedule:
       interval: "daily"
@@ -40,7 +24,7 @@ updates:
   # Enable version updates for Docker
   - package-ecosystem: "docker"
     # Look for a `Dockerfile` in the `compose/production/django` directory
-    directory: "/templates/server/default/compose/production/django/"
+    directory: "compose/production/django/"
     # Check for updates to GitHub Actions every weekday
     schedule:
       interval: "daily"
@@ -48,7 +32,7 @@ updates:
   # Enable version updates for Docker
   - package-ecosystem: "docker"
     # Look for a `Dockerfile` in the `compose/production/postgres` directory
-    directory: "/templates/server/default/compose/local/postgres/"
+    directory: "compose/local/postgres/"
     # Check for updates to GitHub Actions every weekday
     schedule:
       interval: "daily"
@@ -56,7 +40,7 @@ updates:
   # Enable version updates for Docker
   - package-ecosystem: "docker"
     # Look for a `Dockerfile` in the `compose/production/traefik` directory
-    directory: "/templates/server/default/compose/production/nginx/"
+    directory: "compose/production/nginx/"
     # Check for updates to GitHub Actions every weekday
     schedule:
       interval: "daily"
@@ -65,7 +49,7 @@ updates:
   - package-ecosystem: "pip"
     # Look for a `requirements.txt` in the `root` directory
     # also 'setup.cfg', 'runtime.txt' and 'requirements/*.txt'
-    directory: "/templates/server/default/"
+    directory: "/"
     # Check for updates to GitHub Actions every weekday
     schedule:
       interval: "daily"
