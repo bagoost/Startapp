@@ -1,8 +1,5 @@
 {
   "extends": "stylelint-config-sass-guidelines",
-  "plugins": [
-    "stylelint-no-unused-selectors"
-  ],
   "rules": {
     "number-leading-zero": null,
     "order/properties-alphabetical-order": null,
@@ -15,8 +12,6 @@
 
     "property-no-vendor-prefix": null,
     "value-no-vendor-prefix": null,
-    "selector-no-qualifying-type": null,
-
-    "plugin/no-unused-selectors": true
+    "selector-no-qualifying-type": null
   }
 }

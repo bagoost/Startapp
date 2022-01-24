@@ -34,10 +34,6 @@ Our web template is built over [Create React App](https://create-react-app.dev/)
 - [Axios](https://axios-http.com/docs/intro)
 - Github Actions workflow
 
-#### Known issues
-
-There is a problem using npm as a project manager, we are working to fix our dependencies to provide this popular project manager. We strongly recommend to use `yarn` while we work on this :)
-
 ### Backend
 
 Our web template is built over [Django Cookiecutter](https://github.com/cookiecutter/cookiecutter-django), with custom configurations, which include:
