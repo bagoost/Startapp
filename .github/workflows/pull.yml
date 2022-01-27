@@ -46,9 +46,9 @@ jobs:
         run: echo "::set-output name=version::$(echo $(node -p -e "require('./package.json').version"))"
 
       - name: Compare versions
-        if: ${{ steps.previoustag.outputs.tag }} == ${{ steps.get-version.outputs.version }}
+        if: ${{ steps.previoustag.outputs.tag == steps.get-version.outputs.version }}
         run: echo "Imprime"
         
       - name: Compare versions
-        if: ${{ steps.previoustag.outputs.tag }} != ${{ steps.get-version.outputs.version }}
+        if: ${{ steps.previoustag.outputs.tag != steps.get-version.outputs.version }}
         run: echo "No imprime"
