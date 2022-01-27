@@ -45,12 +45,17 @@ jobs:
     steps:
       - name: Checkout Code Repository
         uses: actions/checkout@v2
+
+      - name: Get Latest Released Version
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
       
-      - name: Get Version
+      - name: Get New Release Version
         id: get-version
         run: echo "::set-output name=version::$(echo $(node -p -e "require('./package.json').version"))"
 
       - name: Create release
+        if: ${{ steps.previoustag.outputs.tag != steps.get-version.outputs.version }}
         uses: actions/create-release@v1
         with:
           draft: false
