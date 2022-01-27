@@ -27,3 +27,17 @@ jobs:
 
       - name: Run linter
         run: npm run lint
+
+  create-release:
+    runs-on: ubuntu-latest
+    needs: [ "linter" ]
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v2
+      
+      - name: Get Version
+        id: get-version
+        run: echo "::set-output name=version::$(echo $(node -p -e "require('./package.json').version"))"
+
+      - name: Compare versions
+        run: echo ${GITHUB_REF##*/} && echo ${{ steps.get-version.outputs.version }}
