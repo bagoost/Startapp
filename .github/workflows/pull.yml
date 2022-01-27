@@ -34,10 +34,16 @@ jobs:
     steps:
       - name: Checkout Code Repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Get Latest tag
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
       
       - name: Get Version
         id: get-version
         run: echo "::set-output name=version::$(echo $(node -p -e "require('./package.json').version"))"
 
       - name: Compare versions
-        run: echo ${GITHUB_REF} && echo ${{ steps.get-version.outputs.version }}
+        run: echo ${{ steps.previoustag.outputs.tag }} && echo ${{ steps.get-version.outputs.version }}
