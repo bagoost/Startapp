@@ -45,6 +45,8 @@ jobs:
     steps:
       - name: Checkout Code Repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Get Latest Released Version
         id: previoustag
