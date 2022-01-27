@@ -40,4 +40,4 @@ jobs:
         run: echo "::set-output name=version::$(echo $(node -p -e "require('./package.json').version"))"
 
       - name: Compare versions
-        run: echo ${GITHUB_REF##*/} && echo ${{ steps.get-version.outputs.version }}
+        run: echo ${GITHUB_REF} && echo ${{ steps.get-version.outputs.version }}
