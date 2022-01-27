@@ -15,18 +15,18 @@ djangorestframework-stubs==1.4.0  # https://github.com/typeddjango/djangorestfra
 
 # Documentation
 # ------------------------------------------------------------------------------
-sphinx==4.3.2  # https://github.com/sphinx-doc/sphinx
+sphinx==4.4.0  # https://github.com/sphinx-doc/sphinx
 sphinx-autobuild==2021.3.14 # https://github.com/GaretJax/sphinx-autobuild
 
 # Code quality
 # ------------------------------------------------------------------------------
 flake8==4.0.1  # https://github.com/PyCQA/flake8
 flake8-isort==4.1.1  # https://github.com/gforcada/flake8-isort
-coverage==6.2  # https://github.com/nedbat/coveragepy
+coverage==6.3  # https://github.com/nedbat/coveragepy
 black==21.12b0  # https://github.com/psf/black
 pylint-django==2.5.0  # https://github.com/PyCQA/pylint-django
 pylint-celery==0.3  # https://github.com/PyCQA/pylint-celery
-pre-commit==2.16.0  # https://github.com/pre-commit/pre-commit
+pre-commit==2.17.0  # https://github.com/pre-commit/pre-commit
 
 # Django
 # ------------------------------------------------------------------------------
@@ -35,9 +35,3 @@ django-debug-toolbar==3.2.4  # https://github.com/jazzband/django-debug-toolbar
 django-extensions==3.1.5  # https://github.com/django-extensions/django-extensions
 django-coverage-plugin==2.0.2  # https://github.com/nedbat/django_coverage_plugin
 pytest-django==4.5.2  # https://github.com/pytest-dev/pytest-django
-
-# Elastic Search
-# ------------------------------------------------------------------------------
-elasticsearch_dsl==7.4.0 # https://elasticsearch-dsl.readthedocs.io/en/latest/
-elasticsearch==7.16.2 # https://elasticsearch-py.readthedocs.io/
-django-elasticsearch-dsl==7.2.2 # https://django-elasticsearch-dsl.readthedocs.io/en/latest/
