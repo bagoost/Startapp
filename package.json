@@ -1,7 +1,7 @@
 {
   "name": "@dealing/startapp",
   "author": "Dealing SpA",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "A kickstarter project builder with our favourite configurations, for web and backend, production-ready.",
   "main": "src/index.js",
   "bin": {
@@ -42,14 +42,14 @@
     "ncp": "^2.0.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.10.1",
-    "@typescript-eslint/parser": "^5.10.1",
-    "eslint": "^8.7.0",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "eslint": "^8.10.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react": "^7.29.2",
     "eslint-plugin-react-hooks": "^4.3.0"
   }
 }
